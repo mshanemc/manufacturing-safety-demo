@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>HttpFormBuilder</members>
+		<members>JWT</members>
+		<members>JWTBearerFlow</members>
+		<members>Vision</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>ChatterItemTrigger</members>
+		<members>ModelLabelTrigger</members>
+		<members>ModelTrigger</members>
+		<members>TriggerForHardHatModelPredictions</members>
+		<name>ApexTrigger</name>
+	</types>
+	<types>
+		<members>DatasetModelList</members>
+		<members>ModelTrainAction</members>
+		<members>PredictiveVisionStats</members>
+		<name>AuraDefinitionBundle</name>
+	</types>
+	<version>39.0</version>
+</Package>

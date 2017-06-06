@@ -1,0 +1,13 @@
+{
+
+	"author": "Shane McLaughlin",
+  "name": "manufacturingSafetyDemo",
+  "description": "demo for classifying images and changing bulb colors based on safety violations",
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+  	"start" : "node hue-safety-demo.js"
+  }
+
+}
