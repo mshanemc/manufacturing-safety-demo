@@ -26,4 +26,5 @@ There may be a possibility of connecting laptop directly to hue bridge and then 
 
 ## Run it
 
+cd to the **nodeLocal** directory
 `heroku local` or `node hue-safety-demo.js`
