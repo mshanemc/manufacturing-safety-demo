@@ -3,8 +3,8 @@ var request = require('request');
 var lightIP = process.env.LIGHTIP; //"192.168.1.73";
 var lightUser = process.env.LIGHTUSER; //"IVhogkeTowDCDoydFxlQq30wgl25lSUvtPieHqgY";
 var lightId = process.env.LIGHTID; //4;
-var clientId = process.env.CLIENTID; //3MVG9SemV5D80oBfmAcCaV8muPm2sVOELIrkXQJdw0Hp0jn2YDvofSnHkH9FtjuT_NSAkGD6kv167k0LAfikQ
-var clientSecret = process.env.CLIENTSECRET; //4086443458085840588
+var clientId = process.env.HUECLIENTID; //3MVG9SemV5D80oBfmAcCaV8muPm2sVOELIrkXQJdw0Hp0jn2YDvofSnHkH9FtjuT_NSAkGD6kv167k0LAfikQ
+var clientSecret = process.env.HUECLIENTSECRET; //4086443458085840588
 var red = 0;
 var green = 14000;
 
@@ -16,7 +16,7 @@ var org = nforce.createConnection({
 });
 
 
-org.authenticate({ username: process.env.SFUSER, password: process.env.SFPASS}, function(err, oauth){
+org.authenticate({ username: process.env.HUESFUSER, password: process.env.HUESFPASS}, function(err, oauth){
 
   if(err) return console.log(err);
 

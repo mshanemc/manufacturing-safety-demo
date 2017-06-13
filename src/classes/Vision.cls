@@ -1,11 +1,11 @@
 public class Vision {
 
-public static String VISION_API = 'https://api.metamind.io/v1/vision';
+public static String VISION_API = 'https://api.einstein.ai/v1/vision';
 public static String PREDICT = VISION_API + '/predict';
 public static String DATASET = VISION_API + '/datasets';
 public static String TRAIN = VISION_API + '/train';
 public static String MODELS = VISION_API + '/models';
-public static String AUTH = 'https://api.metamind.io/v1/oauth2/token';
+public static String AUTH = 'https://api.einstein.ai/v1/oauth2/token';
 
 @AuraEnabled
 public static string scriptHelper (string labelSFDCId){
@@ -154,6 +154,28 @@ public static string createModel (string modelName, String access_token){
     System.debug('ERROR:' + e);
     return null;
   }
+}
+
+@future(Callout=true)
+public static void sendExampleEvent(id feedPostId){
+  EinsteinExample__e ex = new EinsteinExample__e();
+  feeditem fi = [select Id, type, HasLink, LinkUrl, ParentId, RelatedRecordId from feeditem where id=:feedPostId];
+  label__c label = [select Id, Einstein_Label_ID__c, Model__r.EinsteinID__c from label__c where id =: fi.ParentId];
+
+  ex.DatasetId__c = label.Model__r.EinsteinID__c;
+  ex.labelId__c = label.Einstein_Label_ID__c;
+
+  if (fi.HasLink){
+    ex.url__c = fi.LinkUrl;
+  } else if (fi.type == 'ContentPost'){
+    contentVersion CV = [select Id, VersionData, FileExtension, ContentDocumentId from contentVersion where Id =: fi.RelatedRecordId];
+    ex.FileId__c = CV.Id;
+    ex.Extension__c = CV.FileExtension;
+  }
+
+  ex.token__c = getAccessToken();
+  EventBus.publish(ex);
+
 }
 
 @future(Callout=true)
